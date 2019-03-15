@@ -1,0 +1,15 @@
+build:
+  image: fedora
+  stage: build
+  script:
+    - dnf -y update
+    - dnf -y install texlive-collection-latex texlive-collection-latexrecommended texlive-lipsum
+    - dnf -y install make cmake
+    - cd doc
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make pdf
+  artifacts:
+    paths:
+      - doc/build/*.pdf

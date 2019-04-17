@@ -59,6 +59,18 @@ Most of the communication between hardware components will be over USB or IP net
 
 \section{Design and Implementation Constraints}
 
+The following design and implementation constraints will be present on the SDR testbed:
+\begin{itemize}
+\item Jobs will be queued and executed sequentially.
+  The testbed can only handle a single experiment at a time.
+  Nevertheless, scaling-out will be possible i.e. by adding more SDR testbeds.
+\item A limited number of SDR devices will be supported.
+  Hardware restrictions place a limit on the number of devices which can be supported.
+  A fixed number of USB and Ethernet ports will be available on the system for connecting SDR devices.
+\item The duration of an experiment will be limited.
+  Since the jobs will be executed sequentially, a limit on the duration of experiments will be placed.
+\end{itemize}
+
 \section{Documentation}
 
 \section{Assumption and Dependencies}

@@ -104,6 +104,17 @@ See chapter \ref{chapter_4} for more details.
 \chapter{External Interfaces}
 \section{User Interfaces}
 
+The entry point of the user to the SDR testbed shall be a Git repository.
+The user shall commit:
+\begin{itemize}
+\item the scenario for an experiment
+\item raw data to be fed to the SDR devices
+\item configuration of the SDR testbed hardware
+\end{itemize}
+Pushing the commits to a remote Git repository shall queue a job to be executed to the computer host where the SDR devices are attached.
+After the execution and completion of the job, the host shall upload the results to the server managing the jobs.
+The user shall be able to view and download the results of the experiment from the job server.
+
 \section{Software Interfaces}
 
 \section{Hardware Interfaces}

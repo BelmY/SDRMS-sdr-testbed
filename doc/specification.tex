@@ -13,6 +13,64 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{color}
+\usepackage[toc,acronyms,section]{glossaries}
+
+\newglossarystyle{definitions}{
+  \glossarystyle{long}
+  \renewenvironment{theglossary}{
+    \begin{longtable}{
+        p{4cm}
+        p{\glsdescwidth}
+      }
+  }{
+    \end{longtable}
+  }
+}
+\newglossary*{definitions}{Definitions}
+\makeglossaries
+
+\newglossaryentry{SDR Testbed}{
+  type=definitions,
+  name=SDR Testbed,
+  description={Software Defined Radio Testbed; the system specified in this document}
+}
+\newglossaryentry{testbed experiment}{
+  type=definitions,
+  name=testbed experiment,
+  description={The procedure as a whole of validating SDR application and technologies}
+}
+\newglossaryentry{job}{
+  type=definitions,
+  name=job,
+  description={A set of actions queue to be executed on an automation server}
+}
+\newglossaryentry{scenario}{
+  type=definitions,
+  name=scenario,
+  description={A set of ordered test cases for validating an SDR application}
+}
+\newglossaryentry{SDR development platform}{
+  type=definitions,
+  name=SDR development platform,
+  description={A development platform which provides toolkits for implementing software defined radios}
+}
+\newglossaryentry{SDR application}{
+  type=definitions,
+  name=SDR application,
+  description={An application implemented using an SDR development platform}
+}
+
+\newacronym{SDR}{SDR}{Software Defined Radio}
+\newacronym{CPU}{CPU}{Central Processing Unit}
+\newacronym{RAM}{RAM}{Random Access Memory}
+\newacronym{USB}{USB}{Universal Serial Bus}
+\newacronym{TX}{TX}{Radio transmission}
+\newacronym{RX}{RX}{Radio reception}
+
+\newglossaryentry{Ethernet}{
+  name=Ethernet,
+  description={A computer networking technology}
+}
 
 \title{Software Defined Radio Testbed}
 \author{Vasilis Tsiligiannis} 

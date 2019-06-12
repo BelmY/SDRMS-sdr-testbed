@@ -6,4 +6,4 @@ project(documentation NONE)
 
 include(UseLATEX)
 
-add_latex_document(specification.tex)
+add_latex_document(specification.tex USE_GLOSSARY)

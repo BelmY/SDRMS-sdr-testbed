@@ -13,7 +13,10 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{color}
+\usepackage{float}
 \usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
 \usepackage[toc,acronyms,section]{glossaries}
 
 \newglossarystyle{definitions}{
@@ -126,6 +129,40 @@ Based on the survey results and the resources allocated for the project, it is d
 Additionally, multiple iterations of design and implementation are planned which may further enhance or extend the above functions.
 Note, that the above list is not exhaustive.
 A more detailed list is provided later in chapter \ref{chapter_4}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=1cm, auto]
+    \tikzset{
+      circlenode/.style={circle,draw=black,very thick,inner sep=0em,minimum size=2cm,text width=2cm,text centered},
+      rectroundnode/.style={rectangle,rounded corners,draw=black,very thick,inner sep=0.5em,minimum size=2em,text width=2cm,text centered},
+      rectnode/.style={rectangle,draw=black,very thick,inner sep=0.5em,minimum size=2em,text width=2cm,text centered},
+      label/.style={text width=7em,text centered},
+      arrow/.style={->,>=latex',shorten >=1pt,thick}
+    }
+    \node[rectroundnode](user){User};
+    \node[rectnode,right=3cm of user](queue){Job queuing};
+    \node[circlenode,below=of queue](initialization){Hardware initialization};
+    \node[circlenode,below=of initialization](job){Scenario execution};
+    \node[rectnode,below=of job](results){Experiment results};
+
+    \draw[arrow](user.east) -- node[label,above]{\small Configuration and input data} (queue.west);
+    \draw[arrow](queue.south) -- (initialization.north);
+    \draw[arrow](initialization.south) -- (job.north);
+    \draw[arrow](job.south) -- (results.north);
+    \draw[arrow](results.west) -| node[label,below]{\small Output data} (user.south);
+  \end{tikzpicture}
+  \medskip
+  \caption{Basic experiment flow}
+  \label{basic flow}
+\end{figure}
+
+Figure \ref{basic flow} shows the very basic experiment flow, based on the high-level functions.
+The user submits the SDR Testbed configuration as well as experiment input data.
+A job queuing mechanism queues the job for the user.
+Once the job is picked up, the hardware is initialized, based on the configuration parameters.
+The experiment scenario is executed using the input data provided.
+As a final step, the result of the experiment is output and becomes available to the user.
 
 \section{System Perspective}
 

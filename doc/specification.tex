@@ -166,6 +166,50 @@ As a final step, the result of the experiment is output and becomes available to
 
 \section{System Perspective}
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=1cm, auto]
+    \tikzset{
+      rectroundnode/.style={rectangle,rounded corners,draw=black,very thick,inner sep=0.5em,minimum height=3em,text width=2.5cm,text centered},
+      label/.style={text width=7em},
+      arrow/.style={<->,>=latex',shorten >=1pt,thick}
+    }
+    \node[rectroundnode,minimum width=15em](host){Computer host};
+    \node[rectroundnode,below=of host,minimum width=15em](hub){USB/Ethernet hub};
+    \node[rectroundnode,below=of hub,text width=1cm](sdr2){SDR \#2};
+    \node[rectroundnode,left=0.5cm of sdr2,text width=1cm](sdr1){SDR \#1};
+    \node[rectroundnode,right=0.5cm of sdr2,text width=1cm](sdrn){SDR \#N};
+    \node[rectroundnode,below=of sdr2,minimum width=15em](progswitch){Programmable switch};
+    \node[rectroundnode,below=of progswitch,minimum width=15em](progatt){Programmable attenuator};
+
+    \draw[arrow](host.south) -- node[label,right]{\small control \& data} (hub.north);
+    \draw[arrow](hub.south) -- node[label,right]{\rotatebox{90}{\small data}} (sdr2.north);
+    \draw[arrow](hub.south -| sdr1.north) -- node[label,right]{\rotatebox{90}{\small data}} (sdr1.north);
+    \draw[arrow](hub.south -| sdrn.north) -- node[label,right]{\rotatebox{90}{\small data}} (sdrn.north);
+    \draw[arrow](sdr2.south) -- node[label,right]{\rotatebox{90}{\small RF}} (progswitch.north);
+    \draw[arrow](sdr1.south) -- node[label,right]{\rotatebox{90}{\small RF}} (progswitch.north -| sdr1.south);
+    \draw[arrow](sdrn.south) -- node[label,right]{\rotatebox{90}{\small RF}} (progswitch.north -| sdrn.south);
+    \draw[arrow](progswitch.south) -- node[label,right]{\rotatebox{90}{\small RF}} (progatt.north);
+    \draw[arrow,<-](progswitch.west) -| ++(-1cm,0) node[label,below,text centered]{\small control} |- (hub.west);
+    \draw[arrow,<-](progatt.east) -| ++(1cm,0) node[label,below,text centered]{\small control} |- (hub.east);
+
+  \end{tikzpicture}
+  \medskip
+  \caption{Example hardware block diagram}
+  \label{hardware block diagram}
+\end{figure}
+
+The SDR Testbed consists both of software and hardware components.
+Figure \ref{hardware block diagram} shows an example high-level block diagram of the hardware components.
+These components are:
+\begin{itemize}
+\item A computer host on which the SDR Testbed software will be running
+\item A USB or/and Ethernet hub for the SDR devices and programmable RF components to connect with the host
+\item A set of SDR devices
+\item A set of programmable RF componets (e.g. RF switch, attenuators, etc.)
+\item A set of fixed components (e.g. USB, Ethernet, RF cables and connectors, fixed attenuators, etc.)
+\end{itemize}
+
 As a whole, the SDR Testbed shall be an independent and totally self-contained system and not part of a larger system.
 Thus, no strict requirements for external interfaces are set.
 Nevertheless, additional ready-made components not defined in this specification may be used to complete it.

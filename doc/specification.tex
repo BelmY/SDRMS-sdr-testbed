@@ -261,9 +261,12 @@ See chapter \ref{chapter_4} for more details.
 The entry point of the user to the SDR Testbed shall be a Git repository.
 The user shall commit:
 \begin{itemize}
-\item the scenario for an experiment
-\item raw data to be fed to the SDR devices
-\item configuration of the SDR testbed hardware
+\item the scenario for an experiment.
+  This scenario shall be written as a Robot Framework Suite.
+\item raw data to be fed to the SDR devices.
+  Git LFS shall be used to commit raw I/Q data.
+\item configuration of the SDR Testbed hardware.
+  The configuration includes selection of the SDR devices to be used and attenuation level.
 \end{itemize}
 The user shall push the commits to a remote Git repository managed by GitLab.
 GitLab CI shall queue a job to be executed to the computer host where the SDR devices are attached.

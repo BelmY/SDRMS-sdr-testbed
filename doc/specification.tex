@@ -275,6 +275,21 @@ The user shall be able to view and download the results of the experiment from t
 
 \section{Software Interfaces}
 
+The SDR Testbed shall have the following software interfaces:
+\begin{itemize}
+\item an SDR development platform.
+  GNU Radio shall be the platform which will be supported initially.
+  Nevertheless, it shall be possible to support other platforms in the future (i.e. Pothos SDR).
+\item VISA API and instrument drivers.
+  VISA is a standard instrument control abstraction layer and shall be used to control the programmable RF switches and attenuators.
+\item an SDR control and data interface.
+  A new software interface shall be developed to abstract the control and data exchange towards the SDR application.
+  This interface shall act as a wrapper function with a purpose to allow realtime control of the SDR during an experiment.
+\item an experiment results file format interface.
+  HDF5 file format shall be used to store the some experiment results.
+  This interface is the library for supporting HDF5 storing.
+\end{itemize}
+
 \section{Hardware Interfaces}
 
 \section{Communication Interfaces}

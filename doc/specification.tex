@@ -301,6 +301,14 @@ The SDR Testbed shall have the following hardware interfaces:
 
 \section{Communication Interfaces}
 
+The SDR Testbed shall have the following communication interfaces:
+\begin{itemize}
+\item SCPI.
+  This interface shall be used to control the programmable RF switch and attenuators.
+\item SDR control and data sockets.
+  Separate network or Unix domain sockets shall be used for controlling and exchanging data with the SDR development platform.
+  These communication interface shall provide support for realtime control of the SDR application.
+\end{itemize}
 
 \chapter{Requirements} \label{chapter_4}
 \section{Functional Requirements}

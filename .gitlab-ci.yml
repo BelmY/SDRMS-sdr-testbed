@@ -3,7 +3,7 @@ build:
   stage: build
   script:
     - dnf -y update
-    - dnf -y install texlive-collection-latex texlive-collection-latexrecommended texlive-lipsum
+    - dnf -y install texlive-collection-latex texlive-collection-latexrecommended texlive-lipsum texlive-glossaries
     - dnf -y install make cmake
     - cd doc
     - mkdir build

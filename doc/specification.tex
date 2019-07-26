@@ -83,6 +83,7 @@
 \author{Vasilis Tsiligiannis} 
 
 \begin{document}
+\renewcommand*{\arraystretch}{2}
 \maketitle
 \tableofcontents
 
@@ -317,166 +318,278 @@ The SDR Testbed shall have the following communication interfaces:
 \section{Functional Requirements}
 
 \subsection{Availability of computer host USB ports}
-\paragraph{ID}
-REQ.0001
-\paragraph{Description}
-The computer host shall have at least 4 USB3.x and 2 x USB2.x ports.
-\paragraph{Rationale}
-Most of the SDR devices interface via USB.
-The computer host should have enough USB ports to accommodate all available SDR devices.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0001 \\
+  \hline
+  \textbf{Description} &
+  The computer host shall have at least 4 USB3.x and 2 x USB2.x ports.
+  \\
+  \hline
+  \textbf{Rationale} &
+  Most of the SDR devices interface via USB.
+  The computer host should have enough USB ports to accommodate all available SDR devices.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Availability of computer host Ethernet}
-\paragraph{ID}
-REQ.0002
-\paragraph{Description}
-The computer host shall have at least one 1000BASE‑T Ethernet port.
-\paragraph{Rationale}
-Some SDR devices interface via Ethernet.
-In addition, programmable RF switches and attenuators interface via Ethernet, too.
-The computer host should have at least one Ethernet port capable of transferring data with high enough throughput to support these devices.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0002 \\
+  \hline
+  \textbf{Description} &
+  The computer host shall have at least one 1000BASE‑T Ethernet port.
+  \\
+  \hline
+  \textbf{Rationale} &
+  Some SDR devices interface via Ethernet.
+  In addition, programmable RF switches and attenuators interface via Ethernet, too.
+  The computer host should have at least one Ethernet port capable of transferring data with high enough throughput to support these devices.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Network connectivity for multiple devices}
-\paragraph{ID}
-REQ.0003
-\paragraph{Description}
-An 8-port managed 1000BASE-T Ethernet switch shall be used to provide network connectivity with devices.
-\paragraph{Rationale}
-A network switch is required to connect all the devices communication via Ethernet.
-The switch shall be manageable for easy configuration, monitoring and adaptation on existing networking infrastructures.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0003 \\
+  \hline
+  \textbf{Description} &
+  An 8-port managed 1000BASE-T Ethernet switch shall be used to provide network connectivity with devices.
+  \\
+  \hline
+  \textbf{Rationale} &
+  A network switch is required to connect all the devices communication via Ethernet.
+  The switch shall be manageable for easy configuration, monitoring and adaptation on existing networking infrastructures.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for PlutoSDR SDR device}
-\paragraph{ID}
-REQ.0004
-\paragraph{Description}
-The SDR testbed shall support Pluto SDR SDR device
-\paragraph{Rationale}
-PlutoSDR is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0004 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support Pluto SDR SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  PlutoSDR is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for Airspy Mini SDR device}
-\paragraph{ID}
-REQ.0005
-\paragraph{Description}
-The SDR testbed shall support Airspy Mini SDR device
-\paragraph{Rationale}
-Airspy Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0005 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support Airspy Mini SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  Airspy Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for SDRPlay RSPduo SDR device}
-\paragraph{ID}
-REQ.0006
-\paragraph{Description}
-The SDR testbed shall support SDRPlay RSPduo SDR device
-\paragraph{Rationale}
-SDRPlay RSPduo is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0006 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support SDRPlay RSPduo SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  SDRPlay RSPduo is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for LimeSDR Mini SDR device}
-\paragraph{ID}
-REQ.0007
-\paragraph{Description}
-The SDR testbed shall support LimeSDR Mini SDR device
-\paragraph{Rationale}
-LimeSDR Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0007 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support LimeSDR Mini SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  LimeSDR Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for bladeRF 2.0 micro SDR device}
-\paragraph{ID}
-REQ.0008
-\paragraph{Description}
-The SDR testbed shall support bladeRF 2.0 micro SDR device
-\paragraph{Rationale}
-bladeRF 2.0 micro is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0008 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support bladeRF 2.0 micro SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  bladeRF 2.0 micro is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for USRP B210 SDR device}
-\paragraph{ID}
-REQ.0009
-\paragraph{Description}
-The SDR testbed shall support USRP B210 SDR device
-\paragraph{Rationale}
-USRP B210 is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0009 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support USRP B210 SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  USRP B210 is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for RTL-SDR v3 SDR device}
-\paragraph{ID}
-REQ.0010
-\paragraph{Description}
-The SDR testbed shall support RTL-SDR v3 SDR device
-\paragraph{Rationale}
-RTL-SDR v3 is one of the selected SDR devices to be supported, based on the requirements survey.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0010 \\
+  \hline
+  \textbf{Description} &
+  The SDR testbed shall support RTL-SDR v3 SDR device
+  \\
+  \hline
+  \textbf{Rationale} &
+  RTL-SDR v3 is one of the selected SDR devices to be supported, based on the requirements survey.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for programmable selection of SDR devices}
-\paragraph{ID}
-REQ.0011
-\paragraph{Description}
-A pair of programmable SP4T RF switches shall be used to switch RF connections between SDR devices.
-The RF switch characteristics are:
-\begin{itemize}
-\item isolation: >=60dB
-\item reliability: >=10Mcycles
-\item insertion loss: <=1dB
-\end{itemize}
-A candidate RF switch is the RC-2SP4T-A18 from Mini-Circuits.
-%%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
-A single pair of SDR devices shall be connected at any time.
-A total of 16 combinations of SDR devices shall be supported.
-\paragraph{Rationale}
-For each experiment a pair of SDR devices will be selected.
-These devices should be RF connected programmably.
-A pair of SP4T RF switches shall be used to provide such connectivity.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0011 \\
+  \hline
+  \textbf{Description} &
+  A pair of programmable SP4T RF switches shall be used to switch RF connections between SDR devices.
+  The RF switch characteristics are:
+  \begin{itemize}
+  \item isolation: >=60dB
+  \item reliability: >=10Mcycles
+  \item insertion loss: <=1dB
+  \end{itemize}
+  A candidate RF switch is the RC-2SP4T-A18 from Mini-Circuits.
+  %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
+  A single pair of SDR devices shall be connected at any time.
+  A total of 16 combinations of SDR devices shall be supported.
+  \\
+  \hline
+  \textbf{Rationale} &
+  For each experiment a pair of SDR devices will be selected.
+  These devices should be RF connected programmably.
+  A pair of SP4T RF switches shall be used to provide such connectivity.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Support for programmable selection of attenuation levels}
-\paragraph{ID}
-REQ.0012
-\paragraph{Description}
-The attenuation levels between the pair of SDR devices shall be controlled programmably.
-A single programmable RF attenuator shall be used for this purpose.
-The RF attenuator characteristics are:
-\begin{itemize}
-\item range: 0dB to -60dB
-\item resolution: 0.25dB
-\item power rating: 20dBm
-\item Ethernet control
-\end{itemize}
-A candidate device is the RCDAT-6000-60 from Mini-Circuits.
-%%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
-\paragraph{Rationale}
-An experiment can require variable attenuation conditions.
-The testbed shall accommodate such cases by using a programmable attenuator.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0012 \\
+  \hline
+  \textbf{Description} &
+  The attenuation levels between the pair of SDR devices shall be controlled programmably.
+  A single programmable RF attenuator shall be used for this purpose.
+  The RF attenuator characteristics are:
+  \begin{itemize}
+  \item range: 0dB to -60dB
+  \item resolution: 0.25dB
+  \item power rating: 20dBm
+  \item Ethernet control
+  \end{itemize}
+  A candidate device is the RCDAT-6000-60 from Mini-Circuits.
+  %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
+  \\
+  \hline
+  \textbf{Rationale} &
+  An experiment can require variable attenuation conditions.
+  The testbed shall accommodate such cases by using a programmable attenuator.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Fixed attenuation between selected SDR devices}
-\paragraph{ID}
-REQ.0013
-\paragraph{Description}
-There shall be a fixed RF attenuation between the selected SDR devices for an experiment.
-This attenuation shall be -60dBm.
-Some candidate devices are the BW-S30W2+ or BW-S20W2+ from Mini-Circuits.
-\paragraph{Rationale}
-A fixed attenuation is required to emulate free-space path loss conditions.
-Combined with the programmable attenuator, this shall give an attenuation range of -60db - -120dB.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0013 \\
+  \hline
+  \textbf{Description} &
+  There shall be a fixed RF attenuation between the selected SDR devices for an experiment.
+  This attenuation shall be -60dBm.
+  Some candidate devices are the BW-S30W2+ or BW-S20W2+ from Mini-Circuits.
+  \\
+  \hline
+  \textbf{Rationale} &
+  A fixed attenuation is required to emulate free-space path loss conditions.
+  Combined with the programmable attenuator, this shall give an attenuation range of -60db - -120dB.
+  \\
+  \hline
+\end{tabular}
 
 \section{Performance Requirements}
 
 \subsection{Dimensions of computer host RAM}
-\paragraph{ID}
-REQ.0101
-\paragraph{Description}
-The computer host shall have at least 16GiB of available RAM
-\paragraph{Rationale}
-Some SDR applications are very demanding to RAM.
-The computer host RAM capacity should be high enough to accommodate such applications.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0101 \\
+  \hline
+  \textbf{Description} &
+  The computer host shall have at least 16GiB of available RAM
+  \\
+  \hline
+  \textbf{Rationale} &
+  Some SDR applications are very demanding to RAM.
+  The computer host RAM capacity should be high enough to accommodate such applications.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Dimensions of computer host multi-threading}
-\paragraph{ID}
-REQ.0102
-\paragraph{Description}
-The computer host shall support at least 8 parallel CPU threads
-\paragraph{Rationale}
-The testbed should support SDR applications which require multiple CPU threads.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0102 \\
+  \hline
+  \textbf{Description} &
+  The computer host shall support at least 8 parallel CPU threads
+  \\
+  \hline
+  \textbf{Rationale} &
+  The testbed should support SDR applications which require multiple CPU threads.
+  \\
+  \hline
+\end{tabular}
 
 \subsection{Dimensions of computer host storage}
-\paragraph{ID}
-REQ.0103
-\paragraph{Description}
-The computer host shall have at least 200GiB of SSD storage available.
-\paragraph{Rationale}
-An experiment may produce large amounts of data while also requiring fast file write access.
-The testbed should support such a case.
+\begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{ID} & REQ.0103 \\
+  \hline
+  \textbf{Description} &
+  The computer host shall have at least 200GiB of SSD storage available.
+  \\
+  \hline
+  \textbf{Rationale} &
+  An experiment may produce large amounts of data while also requiring fast file write access.
+  The testbed should support such a case.
+  \\
+  \hline
+\end{tabular}
 
 \section{Security Requirements}
 

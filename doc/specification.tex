@@ -428,16 +428,27 @@ The attenuation levels between the pair of SDR devices shall be controlled progr
 A single programmable RF attenuator shall be used for this purpose.
 The RF attenuator characteristics are:
 \begin{itemize}
-\item range: 0dB to -90dB
+\item range: 0dB to -60dB
 \item resolution: 0.25dB
 \item power rating: 20dBm
 \item Ethernet control
 \end{itemize}
-A candidate device is the RCDAT-6000-90 from Mini-Circuits.
+A candidate device is the RCDAT-6000-60 from Mini-Circuits.
 %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
 \paragraph{Rationale}
 An experiment can require variable attenuation conditions.
 The testbed shall accommodate such cases by using a programmable attenuator.
+
+\subsection{Fixed attenuation between selected SDR devices}
+\paragraph{ID}
+REQ.0013
+\paragraph{Description}
+There shall be a fixed RF attenuation between the selected SDR devices for an experiment.
+This attenuation shall be -60dBm.
+Some candidate devices are the BW-S30W2+ or BW-S20W2+ from Mini-Circuits.
+\paragraph{Rationale}
+A fixed attenuation is required to emulate free-space path loss conditions.
+Combined with the programmable attenuator, this shall give an attenuation range of -60db - -120dB.
 
 \section{Performance Requirements}
 

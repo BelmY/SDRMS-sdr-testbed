@@ -441,6 +441,32 @@ The testbed shall accommodate such cases by using a programmable attenuator.
 
 \section{Performance Requirements}
 
+\subsection{Dimensions of computer host RAM}
+\paragraph{ID}
+REQ.0101
+\paragraph{Description}
+The computer host shall have at least 16GiB of available RAM
+\paragraph{Rationale}
+Some SDR applications are very demanding to RAM.
+The computer host RAM capacity should be high enough to accommodate such applications.
+
+\subsection{Dimensions of computer host multi-threading}
+\paragraph{ID}
+REQ.0102
+\paragraph{Description}
+The computer host shall support at least 8 parallel CPU threads
+\paragraph{Rationale}
+The testbed should support SDR applications which require multiple CPU threads.
+
+\subsection{Dimensions of computer host storage}
+\paragraph{ID}
+REQ.0103
+\paragraph{Description}
+The computer host shall have at least 200GiB of SSD storage available.
+\paragraph{Rationale}
+An experiment may produce large amounts of data while also requiring fast file write access.
+The testbed should support such a case.
+
 \section{Security Requirements}
 
 

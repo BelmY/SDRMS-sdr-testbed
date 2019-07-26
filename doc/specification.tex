@@ -316,6 +316,129 @@ The SDR Testbed shall have the following communication interfaces:
 \chapter{Requirements} \label{chapter_4}
 \section{Functional Requirements}
 
+\subsection{Availability of computer host USB ports}
+\paragraph{ID}
+REQ.0001
+\paragraph{Description}
+The computer host shall have at least 4 USB3.x and 2 x USB2.x ports.
+\paragraph{Rationale}
+Most of the SDR devices interface via USB.
+The computer host should have enough USB ports to accommodate all available SDR devices.
+
+\subsection{Availability of computer host Ethernet}
+\paragraph{ID}
+REQ.0002
+\paragraph{Description}
+The computer host shall have at least one 1000BASE‑T Ethernet port.
+\paragraph{Rationale}
+Some SDR devices interface via Ethernet.
+In addition, programmable RF switches and attenuators interface via Ethernet, too.
+The computer host should have at least one Ethernet port capable of transferring data with high enough throughput to support these devices.
+
+\subsection{Network connectivity for multiple devices}
+\paragraph{ID}
+REQ.0003
+\paragraph{Description}
+An 8-port managed 1000BASE-T Ethernet switch shall be used to provide network connectivity with devices.
+\paragraph{Rationale}
+A network switch is required to connect all the devices communication via Ethernet.
+The switch shall be manageable for easy configuration, monitoring and adaptation on existing networking infrastructures.
+
+\subsection{Support for PlutoSDR SDR device}
+\paragraph{ID}
+REQ.0004
+\paragraph{Description}
+The SDR testbed shall support Pluto SDR SDR device
+\paragraph{Rationale}
+PlutoSDR is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for Airspy Mini SDR device}
+\paragraph{ID}
+REQ.0005
+\paragraph{Description}
+The SDR testbed shall support Airspy Mini SDR device
+\paragraph{Rationale}
+Airspy Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for SDRPlay RSPduo SDR device}
+\paragraph{ID}
+REQ.0006
+\paragraph{Description}
+The SDR testbed shall support SDRPlay RSPduo SDR device
+\paragraph{Rationale}
+SDRPlay RSPduo is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for LimeSDR Mini SDR device}
+\paragraph{ID}
+REQ.0007
+\paragraph{Description}
+The SDR testbed shall support LimeSDR Mini SDR device
+\paragraph{Rationale}
+LimeSDR Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for bladeRF 2.0 micro SDR device}
+\paragraph{ID}
+REQ.0008
+\paragraph{Description}
+The SDR testbed shall support bladeRF 2.0 micro SDR device
+\paragraph{Rationale}
+bladeRF 2.0 micro is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for USRP B210 SDR device}
+\paragraph{ID}
+REQ.0009
+\paragraph{Description}
+The SDR testbed shall support USRP B210 SDR device
+\paragraph{Rationale}
+USRP B210 is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for RTL-SDR v3 SDR device}
+\paragraph{ID}
+REQ.0010
+\paragraph{Description}
+The SDR testbed shall support RTL-SDR v3 SDR device
+\paragraph{Rationale}
+RTL-SDR v3 is one of the selected SDR devices to be supported, based on the requirements survey.
+
+\subsection{Support for programmable selection of SDR devices}
+\paragraph{ID}
+REQ.0011
+\paragraph{Description}
+A pair of programmable SP4T RF switches shall be used to switch RF connections between SDR devices.
+The RF switch characteristics are:
+\begin{itemize}
+\item isolation: >=60dB
+\item reliability: >=10Mcycles
+\item insertion loss: <=1dB
+\end{itemize}
+A candidate RF switch is the RC-2SP4T-A18 from Mini-Circuits.
+%%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
+A single pair of SDR devices shall be connected at any time.
+A total of 16 combinations of SDR devices shall be supported.
+\paragraph{Rationale}
+For each experiment a pair of SDR devices will be selected.
+These devices should be RF connected programmably.
+A pair of SP4T RF switches shall be used to provide such connectivity.
+
+\subsection{Support for programmable selection of attenuation levels}
+\paragraph{ID}
+REQ.0012
+\paragraph{Description}
+The attenuation levels between the pair of SDR devices shall be controlled programmably.
+A single programmable RF attenuator shall be used for this purpose.
+The RF attenuator characteristics are:
+\begin{itemize}
+\item range: 0dB to -90dB
+\item resolution: 0.25dB
+\item power rating: 20dBm
+\item Ethernet control
+\end{itemize}
+A candidate device is the RCDAT-6000-90 from Mini-Circuits.
+%%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
+\paragraph{Rationale}
+An experiment can require variable attenuation conditions.
+The testbed shall accommodate such cases by using a programmable attenuator.
+
 \section{Performance Requirements}
 
 \section{Security Requirements}

@@ -31,6 +31,19 @@
   }
 }
 \newglossary*{definitions}{Definitions}
+
+\newglossarystyle{references}{
+  \glossarystyle{long}
+  \renewenvironment{theglossary}{
+    \begin{longtable}{
+        p{3cm}
+        p{\glsdescwidth}
+      }
+  }{
+    \end{longtable}
+  }
+}
+\newglossary*{references}{References}
 \makeglossaries
 
 \newglossaryentry{SDR Testbed}{
@@ -62,6 +75,27 @@
   type=definitions,
   name=SDR application,
   description={An application implemented using an SDR development platform}
+}
+
+\newglossaryentry{Robot Framework}{
+  type=references,
+  name=\href{https://robotframework.org/}{Robot Framework},
+  description={A Python-based automation framework}
+}
+\newglossaryentry{VISA}{
+  type=references,
+  name=\href{https://en.wikipedia.org/wiki/Virtual\_instrument\_software\_architecture}{VISA},
+  description={Virtual Instrument Software Architecture}
+}
+\newglossaryentry{HDF5}{
+  type=references,
+  name=\href{https://www.hdfgroup.org/solutions/hdf5/}{HDF5},
+  description={Hierarchical Data Format, version 5}
+}
+\newglossaryentry{RFC2119}{
+  type=references,
+  name=\href{https://www.ietf.org/rfc/rfc2119.txt}{RFC2119},
+  description={Key words for use in RFCs to Indicate Requirement Levels}
 }
 
 \newacronym{SDR}{SDR}{Software Defined Radio}
@@ -113,8 +147,7 @@ The Software Defined Radio Testbed system described in this document plans to be
 This testbed will allow early experimentation and testing of new algorithms and configurations.
 The implementation of an SDR Testbed system will span from software and hardware development to integration of various SDR toolchains and hardware components.
 
-\section{References}
-
+\printglossary[type=references,numberedsection,style=references,nonumberlist]
 
 \chapter{Description}
 \section{System Functions}

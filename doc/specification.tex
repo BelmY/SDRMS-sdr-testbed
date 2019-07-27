@@ -18,6 +18,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning,fit}
 \usepackage[toc,acronyms,section]{glossaries}
+\usepackage{textcomp}
 
 \newglossarystyle{definitions}{
   \glossarystyle{long}
@@ -481,9 +482,9 @@ The SDR Testbed shall have the following communication interfaces:
   \item insertion loss: <=1dB
   \end{itemize}
   A candidate RF switch is the RC-2SP4T-A18 from Mini-Circuits.
-  %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
   A single pair of SDR devices shall be connected at any time.
   A total of 16 combinations of SDR devices shall be supported.
+  %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
 }{
   For each experiment a pair of SDR devices will be selected.
   These devices should be RF connected programmably.
@@ -514,6 +515,114 @@ The SDR Testbed shall have the following communication interfaces:
   Combined with the programmable attenuator, this shall give an attenuation range of -60db - -120dB.
 }{}
 
+\requirement{REQ.0014}{Support for GNU Radio SDR development platform}{
+  GNU Radio shall be used as the SDR development platform.
+}{
+  GNU Radio is the de facto standard for developing SDR applications.
+}{}
+\requirement{REQ.0015}{Support for gr-leo}{
+  gr-leo support shall be included with GNU Radio
+}{
+  gr-leo is a space telecommunication simulator.
+  Channel simulation is an essential feature for an SDR Testbed focusing on satellite communications.
+}{}
+\requirement{REQ.0016}{Support for gr-soapy}{
+  gr-soapy support shall be included with GNU Radio
+}{
+  gr-soapy is an interface to SoapySDR for GNU Radio.
+}{}
+\requirement{REQ.0017}{Configurability of RF switches and attenuators}{
+  A utility shall be developed to configure and control the SDR Testbed hardware.
+  This utility shall be used to control:
+  \begin{itemize}
+  \item programmable RF switches
+  \item programmable RF attenuators
+  \end{itemize}
+  This application shall utilize VISA and SCPI protocols.
+  The communication with the devices shall be via Ethernet.
+}{
+  Programmable switches and attenuators need to be configured before the start or during the experiment.
+  The testbed shall support such a function.
+}{}
+\requirement{REQ.0018}{Abstraction interface to SDR application}{
+  An wrapper application shall be developed to provide an abstraction layer (API) for executing SDR applications.
+  The wrapper shall provide separate control and data sockets.
+  The socket shall be network or Unix domain sockets.
+  The control socket shall be used for controlling the SDR application.
+  The data socket shall be used to exchanging data.
+}{
+  A form of an API is required for the SDR Testbed to execute SDR application in a consistent way.
+  Additionally, the above interfaces will allow realtime control of the SDR application.
+}{}
+\requirement{REQ.0019}{Use of Git for submitting scenario and data}{
+  Git shall be used to submit scenarios and data for an experiment.
+  Scenarios, in the form of Robot Framework suites shall be committed to a repository.
+  Bulk data shall be committed in Git LFS.
+}{
+  Git is a software version control system.
+  By using Git to store scenarios and data, ATDD and HIL is possible.
+}{}
+\requirement{REQ.0020}{GitLab CI as a job service}{
+  GitLab and GitLab CI shall be used as a job and experiment results storage service.
+  The computer host shall be running a GitLab Runner.
+  The runner shall be registered to GitLab.
+  It shall be configured as a Docker executor.
+  Parallel job execution shall not be allowed.
+  Experiment results shall be upload as artifacts to GitLab.
+}{
+  GitLab CI is a continuous integration and delivery service.
+  Such a CI service is required by SDR Testbed for job queuing and storage of experiment results.
+}{}
+\requirement{REQ.0021}{Support of Robot Test Automation Framework}{
+  Robot Framework shall be used as an Automation Framework.
+  A set of libraries shall be developed for the framework:
+  \begin{itemize}
+  \item Library for controlling the SDR Testbed configuration utility
+  \item Library for handling all functions of the SDR controller
+  \end{itemize}
+  Experiment scenarios shall be written as Robot Framework Suites.
+}{
+  An automation framework is required to execute elaborate scenarios.
+  Robot Framework is an automation framework for acceptance testing, acceptance test driven development (ATDD), and robotic process automation (RPA).
+  The framework needs to be extended with SDR Testbed specific functions.
+}{}
+\requirement{REQ.0022}{Storing of experiment results in Hierarchical Data Format}{
+  It shall be possible to store experiment results in HDF5\textsuperscript{\textregistered} format.
+}{
+  HDF is a file format designed to store and organize large amounts of data.
+  Testbed experiment which generated large amounts of data can benefit by HDF5\textsuperscript{\textregistered} support.
+}{}
+\requirement{REQ.0023}{Limitation of experiment running time}{
+  There amount of time an experiment can be running shall be limited.
+  A timeout shall be set for this purpose.
+  This timeout shall be set to 30 minutes.
+  After the time has elapsed, the execution of the experiment shall be terminated and the resources shall be freed and cleaned up.
+}{
+  The SDR Testbed has limited resources while the jobs are executed serially.
+  A limit has to be set on the time an experiment will be running so that the testbed can be available to other users.
+}{}
+\requirement{REQ.0024}{Limitation of experiment results size}{
+  There amount of data an experiment can produce shall be limited.
+  The maximum data that an experiment can output shall be set to 100MiB.
+  Data that exceed the above limit shall not be uploaded to the storage service.
+}{
+  The SDR Testbed and storage service has limited resources.
+  A limit has to be set on the amount of data an experiment can generate.
+}{}
+\requirement{REQ.0025}{Containerization of SDR Testbed applications}{
+  The following SDR Testbed application shall be containerized with Docker:
+  \begin{itemize}
+  \item Robot Framework
+  \item SDR Testbed configuration utility
+  \item GNU Radio
+  \item SDR controller
+  \end{itemize}
+  A single container shall be created which will contain all the above software
+}{
+  Containerizing the SDR Testbed applications provides isolation, a reproducible environment and easier management.
+  It also allows the use of GitLab Runner Docker executors.
+}{}
+
 \section{Performance Requirements}
 
 \requirement{REQ.0101}{Dimensions of computer host RAM}{
@@ -535,6 +644,14 @@ The SDR Testbed shall have the following communication interfaces:
 }{}
 
 \section{Security Requirements}
+
+\requirement{REQ.0201}{Control of access to the system}{
+  Access to the SDR Testbed shall be controlled.
+  GitLab users shall be granted access to the GitLab Runner running on the computer host.
+}{
+  Some form of access control has to be present for the SDR Testbed.
+  GitLab already provides functions to grant access to specific GitLab Runners.
+}{}
 
 
 \chapter*{Appendix I: Glossary and Acronyms}

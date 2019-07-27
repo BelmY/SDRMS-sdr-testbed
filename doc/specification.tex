@@ -277,8 +277,8 @@ These components are:
       arrowlabel/.style={text width=7em},
       arrow/.style={<->,>=latex',shorten >=1pt,thick}
     }
-    \node[rectroundnode,minimum width=10em](userinterface){User interface};
-    \node[rectroundnode,right=3.5em of userinterface,minimum width=10em](jobserver){Job queuing server};
+    \node[rectroundnode,minimum width=10em](userinterface){User interfaces};
+    \node[rectroundnode,right=3.5em of userinterface,minimum width=10em](jobserver){Job queuing service};
     \node[rectroundnode,below=of jobserver,minimum width=7em](automation){Automation framework};
     \node[rectroundnode,below=of automation,minimum width=7em](wrapper){SDR control interface wrapper};
     \node[rectroundnode,right=of automation,minimum width=7em](testbedconfig){SDR testbed configuration software};
@@ -286,7 +286,7 @@ These components are:
     \node[rectroundnode,minimum width=10em,minimum height=8em,below=of userinterface](storage){Experiment results storage service};
     \node[rectfit,fit=(automation)(testbedconfig)(wrapper),dashed,label={below left:container}](container){};
 
-    \draw[arrow,->](userinterface.east) -- node[arrowlabel,above,text centered]{\small scenario} (jobserver.west);
+    \draw[arrow,->](userinterface.east) -- node[arrowlabel,above,text centered]{\small scenario \\ \& data} (jobserver.west);
     \draw[arrow,->](jobserver.south) -- node[arrowlabel,right]{\small job} (automation.north);
     \draw[arrow,->](automation.east) -- node[arrowlabel,above,text centered]{\small config} (testbedconfig.west);
     \draw[arrow](automation.south) -- node[arrowlabel,right]{\small control \\ \& data} (wrapper.north);
@@ -299,6 +299,19 @@ These components are:
   \caption{Example software block diagram}
   \label{software block diagram}
 \end{figure}
+
+Figure \ref{software block diagram} shows an example high-level block diagram of the software components.
+These components are:
+\begin{itemize}
+\item Interfaces which the user will use to submit scenarios and data and retrieve experiment results
+\item A job queuing service
+\item A container in which application will be running
+\item An automation framework which will execute the scenario submitted by the user
+\item Software to configure the SDR testbed
+\item Software to act as an wrapper for controlling the SDR development platform
+\item An SDR development platform which the SDR application will run on
+\item A storage service where the experiment results will be stored
+\end{itemize}
 
 As a whole, the SDR Testbed shall be an independent and totally self-contained system and not part of a larger system.
 Thus, no strict requirements for external interfaces are set.

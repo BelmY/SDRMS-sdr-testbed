@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tikz}
-\usetikzlibrary{arrows,positioning}
+\usetikzlibrary{arrows,positioning,fit}
 \usepackage[toc,acronyms,section]{glossaries}
 
 \newglossarystyle{definitions}{
@@ -266,6 +266,39 @@ These components are:
 \item A set of programmable RF componets (e.g. RF switch, attenuators, etc.)
 \item A set of fixed components (e.g. USB, Ethernet, RF cables and connectors, fixed attenuators, etc.)
 \end{itemize}
+
+\noindent
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=1cm,auto]
+    \tikzset{
+      rectroundnode/.style={rectangle,rounded corners,draw=black,very thick,inner sep=0.5em,minimum height=3em,text width=2.5cm,text centered},
+      rectfit/.style={rounded corners,draw=black,very thick,inner sep=0.5em,minimum height=3em,text width=2.5cm,text centered},
+      arrowlabel/.style={text width=7em},
+      arrow/.style={<->,>=latex',shorten >=1pt,thick}
+    }
+    \node[rectroundnode,minimum width=10em](userinterface){User interface};
+    \node[rectroundnode,right=3.5em of userinterface,minimum width=10em](jobserver){Job queuing server};
+    \node[rectroundnode,below=of jobserver,minimum width=7em](automation){Automation framework};
+    \node[rectroundnode,below=of automation,minimum width=7em](wrapper){SDR control interface wrapper};
+    \node[rectroundnode,right=of automation,minimum width=7em](testbedconfig){SDR testbed configuration software};
+    \node[rectroundnode,right=of wrapper,minimum width=7em](sdrplatform){SDR development platform};
+    \node[rectroundnode,minimum width=10em,minimum height=8em,below=of userinterface](storage){Experiment results storage service};
+    \node[rectfit,fit=(automation)(testbedconfig)(wrapper),dashed,label={below left:container}](container){};
+
+    \draw[arrow,->](userinterface.east) -- node[arrowlabel,above,text centered]{\small scenario} (jobserver.west);
+    \draw[arrow,->](jobserver.south) -- node[arrowlabel,right]{\small job} (automation.north);
+    \draw[arrow,->](automation.east) -- node[arrowlabel,above,text centered]{\small config} (testbedconfig.west);
+    \draw[arrow](automation.south) -- node[arrowlabel,right]{\small control \\ \& data} (wrapper.north);
+    \draw[arrow](wrapper.east) -- node[arrowlabel,above,text centered]{\small control \\ \& data} (sdrplatform.west);
+    \draw[arrow,<-](userinterface.south) -- node[arrowlabel,right]{\small experiment results} (storage.north);
+    \draw[arrow,->](automation.west) -- node[arrowlabel,above,text centered]{\small data} (storage.east |- automation.west);
+
+  \end{tikzpicture}
+  \medskip
+  \caption{Example software block diagram}
+  \label{software block diagram}
+\end{figure}
 
 As a whole, the SDR Testbed shall be an independent and totally self-contained system and not part of a larger system.
 Thus, no strict requirements for external interfaces are set.

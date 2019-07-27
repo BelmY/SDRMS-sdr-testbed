@@ -47,6 +47,7 @@
 \newglossary*{references}{References}
 \makeglossaries
 
+%% definitions glossary
 \newglossaryentry{SDR Testbed}{
   type=definitions,
   name=SDR Testbed,
@@ -78,6 +79,7 @@
   description={An application implemented using an SDR development platform}
 }
 
+%% references glossary
 \newglossaryentry{Robot Framework}{
   type=references,
   name=\href{https://robotframework.org/}{Robot Framework},
@@ -99,6 +101,7 @@
   description={Key words for use in RFCs to Indicate Requirement Levels}
 }
 
+%% Acronyms
 \newacronym{SDR}{SDR}{Software Defined Radio}
 \newacronym{CPU}{CPU}{Central Processing Unit}
 \newacronym{RAM}{RAM}{Random Access Memory}
@@ -106,11 +109,13 @@
 \newacronym{TX}{TX}{Radio transmission}
 \newacronym{RX}{RX}{Radio reception}
 
+%% Glossary
 \newglossaryentry{Ethernet}{
   name=Ethernet,
   description={A computer networking technology}
 }
 
+%% requirements command
 \newcommand{\requirement}[5]{
   \subsection{#2}
   #5

@@ -176,12 +176,12 @@ This specification is based on high-level requirements which have been collected
 The collection has been facilitated by the use of a requirements survey.
 Based on the survey results and the resources allocated for the project, it is decided that the following high-level functions shall be supported:
 \begin{itemize}
-\item importing and exporting of data for input and output of experiments
-\item selection of various SDR device combinations
-\item single TX and RX paths
-\item selection of different attenuation levels between TX and RX devices
-\item telecommunication channel simulation
-\item first-come-first-served job queuing
+\item importing and exporting of data for input and output of experiments.
+\item selection of various SDR device combinations.
+\item single TX and RX paths.
+\item selection of different attenuation levels between TX and RX devices.
+\item telecommunication channel simulation.
+\item first-come-first-served job queuing.
 \end{itemize}
 
 Additionally, multiple iterations of design and implementation are planned which may further enhance or extend the above functions.
@@ -261,11 +261,11 @@ The SDR Testbed consists both of software and hardware components.
 Figure \ref{hardware block diagram} shows an example high-level block diagram of the hardware components.
 These components are:
 \begin{itemize}
-\item A computer host on which the SDR Testbed software will be running
-\item A USB or/and Ethernet hub for the SDR devices and programmable RF components to connect with the host
-\item A set of SDR devices
-\item A set of programmable RF componets (e.g. RF switch, attenuators, etc.)
-\item A set of fixed components (e.g. USB, Ethernet, RF cables and connectors, fixed attenuators, etc.)
+\item A computer host where the SDR Testbed software is running.
+\item A USB or/and Ethernet hub for the SDR devices and programmable RF components to connect with the host.
+\item A set of SDR devices.
+\item A set of programmable RF components (e.g. RF switch, attenuators, etc.).
+\item A set of fixed components (e.g. USB, Ethernet, RF cables and connectors, fixed attenuators, etc.).
 \end{itemize}
 
 \noindent
@@ -304,14 +304,14 @@ These components are:
 Figure \ref{software block diagram} shows an example high-level block diagram of the software components.
 These components are:
 \begin{itemize}
-\item Interfaces which the user will use to submit scenarios and data and retrieve experiment results
-\item A job queuing service
-\item A container in which application will be running
-\item An automation framework which will execute the scenario submitted by the user
-\item Software to configure the SDR testbed
-\item Software to act as an wrapper for controlling the SDR development platform
-\item An SDR development platform which the SDR application will run on
-\item A storage service where the experiment results will be stored
+\item Interfaces which the user uses to submit scenarios and data and retrieve experiment results.
+\item A job queuing service.
+\item A container in which application are running.
+\item An automation framework which executes the scenario submitted by the user.
+\item Software to configure the SDR testbed.
+\item Software to act as a wrapper for controlling the SDR development platform.
+\item An SDR development platform which the SDR application is running.
+\item A storage service where the experiment results are stored.
 \end{itemize}
 
 As a whole, the SDR Testbed shall be an independent and totally self-contained system and not part of a larger system.
@@ -320,15 +320,15 @@ Nevertheless, additional ready-made components not defined in this specification
 
 \section{Operating Environment}
 
-The software operating environment will be based, to the maximum extent possible, on free and open source software.
-All software components of SDR Testbed will be running on Linux OS.
+The software operating environment shall be based, to the maximum extent possible, on free and open source software.
+All software components of SDR Testbed shall be running on Linux OS.
 It is suggested that a modern enterprise grade Linux distribution (e.g. CentOS) should be used for this purpose.
-The services and application will be containerized to provide isolation and easier management.
+The services and application shall be containerized to provide isolation and easier management.
 
 The hardware operating environment can be based both on commercial and/or non-commercial hardware.
-The testbed will be developed for x86-64 hardware platform, either server or COTS PC.
-Nevertheless, provision has been made so that it will be possible to run on different architectures with minimal changes.
-Most of the communication between hardware components will be over USB or IP network.
+The testbed shall be developed for x86-64 hardware platform, either server or COTS PC.
+Nevertheless, provision has been made so that it should be possible to run on different architectures with minimal changes.
+Most of the communication between hardware components shall be over USB or IP network.
 
 \section{Design and Implementation Constraints}
 
@@ -346,12 +346,12 @@ The following design and implementation constraints will be present on the SDR T
 
 \section{Documentation}
 
-The documentation will consist of two parts:
+The documentation shall consist of two parts:
 \begin{itemize}
 \item Users' documentation.
-  This documentation will be the manual on how to use the testbed from users' point of view.
+  This documentation shall be the manual on how to use the testbed from users' point of view.
 \item Developers' documentation.
-  This documentation will be intended for developers on how to further extend or maintain the system.
+  This documentation shall be intended for developers on how to further extend or maintain the system.
 \end{itemize}
 
 \section{Assumption and Dependencies}
@@ -384,7 +384,7 @@ The user shall be able to view and download the results of the experiment from t
 The SDR Testbed shall have the following software interfaces:
 \begin{itemize}
 \item an SDR development platform.
-  GNU Radio shall be the platform which will be supported initially.
+  GNU Radio shall be the platform initially supported.
   Nevertheless, it shall be possible to support other platforms in the future (i.e. Pothos SDR).
 \item VISA API and instrument drivers.
   VISA is a standard instrument control abstraction layer and shall be used to control the programmable RF switches and attenuators.
@@ -392,8 +392,8 @@ The SDR Testbed shall have the following software interfaces:
   A new software interface shall be developed to abstract the control and data exchange towards the SDR application.
   This interface shall act as a wrapper function with a purpose to allow realtime control of the SDR during an experiment.
 \item an experiment results file format interface.
-  HDF5 file format shall be used to store the some experiment results.
-  This interface is the library for supporting HDF5 storing.
+  HDF5 file format shall be used to store some experiment results.
+  This interface shall be the library for supporting HDF5 storing.
 \end{itemize}
 
 \section{Hardware Interfaces}
@@ -420,7 +420,7 @@ The SDR Testbed shall have the following communication interfaces:
 \section{Functional Requirements}
 
 \requirement{REQ.0001}{Availability of computer host USB ports}{
-  The computer host shall have at least 4 USB3.x and 2 x USB2.x ports.
+  The computer host shall have at least 4 x USB3.x and 2 x USB2.x ports.
 }{
   Most of the SDR devices interface via USB.
   The computer host should have enough USB ports to accommodate all available SDR devices.
@@ -439,43 +439,43 @@ The SDR Testbed shall have the following communication interfaces:
   The switch shall be manageable for easy configuration, monitoring and adaptation on existing networking infrastructures.
 }{}
 \requirement{REQ.0004}{Support for PlutoSDR SDR device}{
-  The SDR testbed shall support Pluto SDR SDR device
+  The SDR testbed shall support Pluto SDR SDR device.
 }{
-  PlutoSDR is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, PlutoSDR is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0005}{Support for Airspy Mini SDR device}{
-  The SDR testbed shall support Airspy Mini SDR device
+  The SDR testbed shall support Airspy Mini SDR device.
 }{
-  Airspy Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, Airspy Mini is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0006}{Support for SDRPlay RSPduo SDR device}{
-  The SDR testbed shall support SDRPlay RSPduo SDR device
+  The SDR testbed shall support SDRPlay RSPduo SDR device.
 }{
-  SDRPlay RSPduo is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, SDRPlay RSPduo is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0007}{Support for LimeSDR Mini SDR device}{
-  The SDR testbed shall support LimeSDR Mini SDR device
+  The SDR testbed shall support LimeSDR Mini SDR device.
 }{
-  LimeSDR Mini is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, LimeSDR Mini is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0008}{Support for bladeRF 2.0 micro SDR device}{
-  The SDR testbed shall support bladeRF 2.0 micro SDR device
+  The SDR testbed shall support bladeRF 2.0 micro SDR device.
 }{
-  bladeRF 2.0 micro is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, bladeRF 2.0 micro is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0009}{Support for USRP B210 SDR device}{
-  The SDR testbed shall support USRP B210 SDR device
+  The SDR testbed shall support USRP B210 SDR device.
 }{
-  USRP B210 is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, USRP B210 is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0010}{Support for RTL-SDR v3 SDR device}{
-  The SDR testbed shall support RTL-SDR v3 SDR device
+  The SDR testbed shall support RTL-SDR v3 SDR device.
 }{
-  RTL-SDR v3 is one of the selected SDR devices to be supported, based on the requirements survey.
+  Based on the requirements survey, RTL-SDR v3 is one of the selected SDR devices to be supported.
 }{}
 \requirement{REQ.0011}{Support for programmable selection of SDR devices}{
-  A pair of programmable SP4T RF switches shall be used to switch RF connections between SDR devices.
-  The RF switch characteristics are:
+  A pair of programmable SP4T RF switches shall be used to select RF connections between SDR devices.
+  The RF switch characteristics shall be:
   \begin{itemize}
   \item isolation: >=60dB
   \item reliability: >=10Mcycles
@@ -486,14 +486,14 @@ The SDR Testbed shall have the following communication interfaces:
   A total of 16 combinations of SDR devices shall be supported.
   %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
 }{
-  For each experiment a pair of SDR devices will be selected.
+  For each experiment a pair of SDR devices need to be selected.
   These devices should be RF connected programmably.
   A pair of SP4T RF switches shall be used to provide such connectivity.
 }{}
 \requirement{REQ.0012}{Support for programmable selection of attenuation levels}{
   The attenuation levels between the pair of SDR devices shall be controlled programmably.
   A single programmable RF attenuator shall be used for this purpose.
-  The RF attenuator characteristics are:
+  The RF attenuator characteristics shall be:
   \begin{itemize}
   \item range: 0dB to -60dB
   \item resolution: 0.25dB
@@ -507,12 +507,12 @@ The SDR Testbed shall have the following communication interfaces:
   The testbed shall accommodate such cases by using a programmable attenuator.
 }{}
 \requirement{REQ.0013}{Fixed attenuation between selected SDR devices}{
-  There shall be a fixed RF attenuation between the selected SDR devices for an experiment.
+  There shall be a fixed RF attenuation between the selected pair of SDR devices.
   This attenuation shall be -60dBm.
   Some candidate devices are the BW-S30W2+ or BW-S20W2+ from Mini-Circuits.
 }{
   A fixed attenuation is required to emulate free-space path loss conditions.
-  Combined with the programmable attenuator, this shall give an attenuation range of -60db - -120dB.
+  Combined with the programmable attenuator, this shall give an attenuation range of -60db to -120dB.
 }{}
 
 \requirement{REQ.0014}{Support for GNU Radio SDR development platform}{
@@ -521,15 +521,16 @@ The SDR Testbed shall have the following communication interfaces:
   GNU Radio is the de facto standard for developing SDR applications.
 }{}
 \requirement{REQ.0015}{Support for gr-leo}{
-  gr-leo support shall be included with GNU Radio
+  gr-leo support shall be included with GNU Radio.
 }{
   gr-leo is a space telecommunication simulator.
   Channel simulation is an essential feature for an SDR Testbed focusing on satellite communications.
 }{}
 \requirement{REQ.0016}{Support for gr-soapy}{
-  gr-soapy support shall be included with GNU Radio
+  gr-soapy support shall be included with GNU Radio.
 }{
   gr-soapy is an interface to SoapySDR for GNU Radio.
+  It provides a clean API for configuring various SDR devices.
 }{}
 \requirement{REQ.0017}{Configurability of RF switches and attenuators}{
   A utility shall be developed to configure and control the SDR Testbed hardware.
@@ -542,10 +543,10 @@ The SDR Testbed shall have the following communication interfaces:
   The communication with the devices shall be via Ethernet.
 }{
   Programmable switches and attenuators need to be configured before the start or during the experiment.
-  The testbed shall support such a function.
+  The testbed needs to support such a function.
 }{}
 \requirement{REQ.0018}{Abstraction interface to SDR application}{
-  An wrapper application shall be developed to provide an abstraction layer (API) for executing SDR applications.
+  A wrapper application shall be developed to provide an abstraction layer (API) for executing SDR applications.
   The wrapper shall provide separate control and data sockets.
   The socket shall be network or Unix domain sockets.
   The control socket shall be used for controlling the SDR application.
@@ -575,10 +576,10 @@ The SDR Testbed shall have the following communication interfaces:
 }{}
 \requirement{REQ.0021}{Support of Robot Test Automation Framework}{
   Robot Framework shall be used as an Automation Framework.
-  A set of libraries shall be developed for the framework:
+  A set of libraries shall be developed to extend the framework:
   \begin{itemize}
-  \item Library for controlling the SDR Testbed configuration utility
-  \item Library for handling all functions of the SDR controller
+  \item Library for controlling the SDR Testbed configuration utility.
+  \item Library for handling all functions of the SDR controller.
   \end{itemize}
   Experiment scenarios shall be written as Robot Framework Suites.
 }{
@@ -590,19 +591,18 @@ The SDR Testbed shall have the following communication interfaces:
   It shall be possible to store experiment results in HDF5\textsuperscript{\textregistered} format.
 }{
   HDF is a file format designed to store and organize large amounts of data.
-  Testbed experiment which generated large amounts of data can benefit by HDF5\textsuperscript{\textregistered} support.
+  Testbed experiment which generated large amounts of data or need to store metadata information can benefit by HDF5\textsuperscript{\textregistered} support.
 }{}
 \requirement{REQ.0023}{Limitation of experiment running time}{
-  There amount of time an experiment can be running shall be limited.
-  A timeout shall be set for this purpose.
-  This timeout shall be set to 30 minutes.
-  After the time has elapsed, the execution of the experiment shall be terminated and the resources shall be freed and cleaned up.
+  The amount of time an experiment can be running shall be limited.
+  A timeout of 30 minutes shall be set for this purpose.
+  After the time has elapsed, the execution of the experiment shall be terminated and the resources shall be freed.
 }{
-  The SDR Testbed has limited resources while the jobs are executed serially.
+  The SDR Testbed has limited resources since the jobs are executed sequentially.
   A limit has to be set on the time an experiment will be running so that the testbed can be available to other users.
 }{}
 \requirement{REQ.0024}{Limitation of experiment results size}{
-  There amount of data an experiment can produce shall be limited.
+  The amount of data an experiment can produce shall be limited.
   The maximum data that an experiment can output shall be set to 100MiB.
   Data that exceed the above limit shall not be uploaded to the storage service.
 }{
@@ -617,7 +617,7 @@ The SDR Testbed shall have the following communication interfaces:
   \item GNU Radio
   \item SDR controller
   \end{itemize}
-  A single container shall be created which will contain all the above software
+  A single container shall be created which will contain all the above software.
 }{
   Containerizing the SDR Testbed applications provides isolation, a reproducible environment and easier management.
   It also allows the use of GitLab Runner Docker executors.
@@ -626,13 +626,13 @@ The SDR Testbed shall have the following communication interfaces:
 \section{Performance Requirements}
 
 \requirement{REQ.0101}{Dimensions of computer host RAM}{
-  The computer host shall have at least 16GiB of available RAM
+  The computer host shall have at least 16GiB of available RAM.
 }{
   Some SDR applications are very demanding to RAM.
   The computer host RAM capacity should be high enough to accommodate such applications.
 }{}
 \requirement{REQ.0102}{Dimensions of computer host multi-threading}{
-  The computer host shall support at least 8 parallel CPU threads
+  The computer host shall support at least 8 parallel CPU threads.
 }{
   The testbed should support SDR applications which require multiple CPU threads.
 }{}

@@ -180,15 +180,10 @@
   name=\href{https://www.minicircuits.com/WebStore/dashboard.html?model=RC-2SP4T-A18}{RC-2SP4T-A18},
   description={A dual programmable \acrshort{SP4T} \acrshort{RF} switch}
 }
-\newglossaryentry{RCDAT-6000-60}{
+\newglossaryentry{RCDAT-6000-90}{
   type=references,
-  name=\href{https://www.minicircuits.com/WebStore/dashboard.html?model=RCDAT-6000-60}{RCDAT-6000-60},
+  name=\href{https://www.minicircuits.com/WebStore/dashboard.html?model=RCDAT-6000-90}{RCDAT-6000-90},
   description={A programmable attenuator}
-}
-\newglossaryentry{BW-S30W2+}{
-  type=references,
-  name=\href{https://www.minicircuits.com/WebStore/dashboard.html?model=BW-S30W2\%2B}{BW-S30W2+},
-  description={A fixed attenuator}
 }
 \newglossaryentry{BW-S20W2+}{
   type=references,
@@ -637,12 +632,12 @@ The \gls{SDR Testbed} shall have the following communication interfaces:
   A single programmable \acrshort{RF} attenuator shall be used for this purpose.
   The \acrshort{RF} attenuator characteristics shall be:
   \begin{itemize}
-  \item range: 0dB to -60dB
+  \item range: 0dB to -90dB
   \item resolution: 0.25dB
   \item power rating: 20dBm
   \item \gls{Ethernet} control
   \end{itemize}
-  A candidate device is the \gls{RCDAT-6000-60} from Mini-Circuits.
+  A candidate device is the \gls{RCDAT-6000-90} from Mini-Circuits.
   %%Figure XXX shows a connection diagram between the programmable RF switch and the SDR devices
 }{
   An \gls{experiment} can require variable attenuation conditions.
@@ -650,11 +645,11 @@ The \gls{SDR Testbed} shall have the following communication interfaces:
 }{}
 \requirement{REQ.0013}{Fixed attenuation between selected SDR devices}{
   There shall be a fixed \acrshort{RF} attenuation between the selected pair of \acrshort{SDR} devices.
-  This attenuation shall be -60dBm.
-  Some candidate devices are the \gls{BW-S30W2+} or \gls{BW-S20W2+} from Mini-Circuits.
+  This attenuation shall be -20dBm.
+  A candidate device is the \gls{BW-S20W2+} from Mini-Circuits.
 }{
   A fixed attenuation is required to emulate free-space path loss conditions.
-  Combined with the programmable attenuator, this shall give an attenuation range of -60db to -120dB.
+  Combined with the programmable attenuator, this shall give an attenuation range of -20db to -110dB.
 }{}
 
 \requirement{REQ.0014}{GNU Radio SDR development platform support}{

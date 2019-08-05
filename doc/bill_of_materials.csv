@@ -1,0 +1,14 @@
+Quantity;Part Number;Manufacturer;Related Requirement;Description
+1;Computer host;-;REQ.0001, REQ.0002;Generic x86-64 PC
+1;TL-SG108E;TP-Link;REQ.0003;8-port managed Gigabit network switch
+1;PlutoSDR;Analog Devices;REQ.0004;PlutoSDR SDR device
+1;Airspy Mini;Airspy;REQ.0005;Airspy Mini SDR device
+1;SDRPlay RSPduo;SDRPlay;REQ.0006;SDRPlay RSPduo SDR device
+1;LimeSDR;Lime microsystems;REQ.0007;LimeSDR SDR device
+1;bladeRF 2.0 micro;Nuand;REQ.0008;bladeRF 2.0 micro SDR device
+1;USRP B210;Ettus Research;REQ.0009;USRP B210 SDR device
+1;RTL-SDR v3;RTL-SDR.com;REQ.0010;RTL-SDR v3 SDR device
+1;RC-2SP4T-A18;Mini-Circuits;REQ.0011;Dual SP4T programmable RF switch
+1;RCDAT-6000-90;Mini-Circuits;REQ.0012;Programmable RF attenuator
+1;BW-S20W2+;Mini-Circuits;REQ.0013;Fixed RF attenuator
+11;141-12SM+;Mini-Circuits;REQ.0011, REQ.0012;12” coaxial cable assembly

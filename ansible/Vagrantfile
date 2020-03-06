@@ -1,0 +1,60 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+def hybrid_inventory(folder)
+  static_inventory = File.join(File.dirname(__FILE__), folder)
+  dynamic_inventory = File.join(File.dirname(__FILE__), ".vagrant/provisioners/ansible/inventory")
+  FileUtils.mkdir_p dynamic_inventory
+  Dir[File.join(static_inventory, '*')].each do |path|
+    FileUtils.ln_sf path, dynamic_inventory
+  end
+  Dir[File.join(static_inventory, '../*')].each do |path|
+    next if File.basename(path) == "inventory"
+    FileUtils.ln_sf path, File.join(dynamic_inventory, '..')
+  end
+end
+
+Vagrant.configure("2") do |config|
+
+  # Configure 'sdr_testbed'
+  config.vm.define :sdr_testbed do |sdr_testbed|
+
+    # Disable sharing of project folder
+    sdr_testbed.vm.synced_folder ".", "/vagrant", disabled: true
+
+    # Set preferred provider
+    sdr_testbed.vm.provider "libvirt" do |domain|
+      domain.memory = "1024"
+      domain.cpus = "2"
+    end
+
+    # Set box and hostname
+    sdr_testbed.vm.box = "centos/7"
+    sdr_testbed.vm.hostname = "sdr-testbed"
+
+    # Execute shell provisioning script
+    sdr_testbed.vm.provision "shell", path: ".vagrant-provision.sh", args: "sdr_testbed"
+
+    # Create a hybrid inventory
+    hybrid_inventory("inventory")
+
+    # Execute Ansible provisioning
+    sdr_testbed.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.groups = {
+        "common" => ["sdr_testbed"]
+      }
+      ansible.extra_vars = {
+        network: nil,
+        ssh_server: {
+          port: 22
+        },
+        partitions: nil,
+        lvm: nil,
+        filesystems: nil,
+        mounts: nil
+      }
+    end
+  end
+
+end

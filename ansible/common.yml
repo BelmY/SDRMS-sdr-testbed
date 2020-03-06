@@ -1,0 +1,6 @@
+---
+- hosts: common
+  roles:
+    - role: common
+      tags:
+        - common

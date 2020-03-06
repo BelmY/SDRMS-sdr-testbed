@@ -1,0 +1,117 @@
+---
+- name: Install Docker repository
+  yum_repository:
+    name: 'docker-ce'
+    description: 'docker-ce'
+    baseurl: '{{ docker_repo_baseurl }}'
+    repo_gpgcheck: false
+    gpgkey: '{{ docker_repo_gpgkey }}'
+    gpgcheck: true
+    state: 'present'
+  when: ansible_distribution in ('CentOS')
+  become: true
+- name: Install Docker
+  package:
+    name: 'docker-ce'
+    state: 'present'
+  notify: 'Restart Docker'
+  register: res
+  until: res is success
+  retries: '{{ package_retries }}'
+  delay: '{{ package_delay }}'
+  become: true
+- name: Create Docker configuration directory
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+    seuser: 'system_u'
+    serole: 'object_r'
+    setype: 'container_config_t'
+  become: true
+- name: Create subordinate user and group ID mappings
+  lineinfile:
+    dest: '{{ item }}'
+    state: 'present'
+    line: 'dockremap:{{ docker_dockremap_subrange }}'
+  with_items:
+    - '/etc/subuid'
+    - '/etc/subgid'
+  notify: 'Restart Docker'
+  become: true
+- name: Configure Docker
+  template:
+    src: etc/docker/daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: '0600'
+    seuser: 'system_u'
+    serole: 'object_r'
+    setype: 'container_config_t'
+  notify: 'Restart Docker'
+  become: true
+- name: Enable Docker
+  service:
+    name: 'docker'
+    enabled: true
+    state: 'started'
+  become: true
+- name: Install PIP and virtualenv
+  package:
+    name: '{{ item }}'
+    state: 'present'
+  register: res
+  until: res is success
+  retries: '{{ package_retries }}'
+  delay: '{{ package_delay }}'
+  with_items:
+    - 'python-pip'
+    - 'python-virtualenv'
+  become: true
+  when: ansible_distribution in ('CentOS')
+- name: Install Docker Compose in virtualenv
+  pip:
+    name: 'docker-compose'
+    version: '{{ docker_compose_version }}'
+    state: 'present'
+    virtualenv: '{{ docker_service_virtualenv }}'
+  register: res
+  until: res is success
+  retries: '{{ package_retries }}'
+  delay: '{{ package_delay }}'
+  become: true
+- name: Start Docker Compose application
+  docker_compose:
+    api_version: '{{ item.api_version | default(omit) }}'
+    build: '{{ item.build | default(omit) }}'
+    cacert_path: '{{ item.cacert_path | default(omit) }}'
+    cert_path: '{{ item.cert_path | default(omit) }}'
+    debug: '{{ item.debug | default(omit) }}'
+    definition: '{{ item.definition | default(omit) }}'
+    dependencies: '{{ item.dependencies | default(omit) }}'
+    docker_host: '{{ item.docker_host | default(omit) }}'
+    files: '{{ item.files | default(omit) }}'
+    hostname_check: '{{ item.hostname_check | default(omit) }}'
+    key_path: '{{ item.key_path | default(omit) }}'
+    nocache: '{{ item.nocache | default(omit) }}'
+    project_name: '{{ item.project_name | default(omit) }}'
+    project_src: '{{ item.project_src | default(omit) }}'
+    pull: '{{ item.pull | default(omit) }}'
+    recreate: '{{ item.recreate | default(omit) }}'
+    remove_images: '{{ item.remove_images | default(omit) }}'
+    remove_volumes: '{{ item.remove_volumes | default(omit) }}'
+    restarted: '{{ item.restarted | default(omit) }}'
+    scale: '{{ item.scale | default(omit) }}'
+    services: '{{ item.services | default(omit) }}'
+    ssl_version: '{{ item.ssl_version | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    stopped: '{{ item.stopped | default(omit) }}'
+    timeout: '{{ item.timeout | default(omit) }}'
+    tls: '{{ item.tls | default(omit) }}'
+    tls_hostname: '{{ item.tls_hostname | default(omit) }}'
+    tls_verify: '{{ item.tls_verify | default(omit) }}'
+  vars:
+    ansible_python_interpreter: '{{ docker_service_virtualenv }}/bin/python'
+  become: true
+  with_items: '{{ docker_services | default([]) }}'
+  when: docker_services is not none
+  no_log: true

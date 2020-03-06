@@ -1,0 +1,38 @@
+---
+- name: Create volume groups
+  lvg:
+    force: '{{ item.force | default(omit) }}'
+    pesize: '{{ item.pesize | default(omit) }}'
+    pv_options: '{{ item.pv_options | default(omit) }}'
+    pvs: '{{ item.pvs | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    vg: '{{ item.vg | default(omit) }}'
+    vg_options: '{{ item.vg_options | default(omit) }}'
+  become: true
+  with_items: '{{ lvm.volume_groups | default([]) }}'
+  when: >-
+    lvm is defined
+    and lvm.volume_groups is not none
+  tags:
+    - lvm
+- name: Create logical volumes
+  lvol:
+    active: '{{ item.active | default(omit) }}'
+    force: '{{ item.force | default(omit) }}'
+    lv: '{{ item.lv | default(omit) }}'
+    opts: '{{ item.opts | default(omit) }}'
+    pvs: '{{ item.pvs | default(omit) }}'
+    resizefs: '{{ item.resizefs | default(omit) }}'
+    shrink: '{{ item.shrink | default(omit) }}'
+    size: '{{ item.size | default(omit) }}'
+    snapshot: '{{ item.snapshot | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    thinpool: '{{ item.thinpool | default(omit) }}'
+    vg: '{{ item.vg | default(omit) }}'
+  become: true
+  with_items: '{{ lvm.logical_volumes | default([]) }}'
+  when: >-
+    lvm is defined
+    and lvm.logical_volumes is not none
+  tags:
+    - lvm

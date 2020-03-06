@@ -1,0 +1,12 @@
+---
+docker_repo_baseurl: 'https://download.docker.com/linux/centos/7/$basearch/stable'
+docker_repo_gpgkey: 'https://download.docker.com/linux/centos/gpg'
+docker_service_virtualenv: '/usr/local/share/virtualenvs/docker-compose'
+docker_dockremap_subrange: '231072:65536'
+docker_log_driver_default: 'json-file'
+docker_log_opts_default: |-
+  "max-size": "10m",
+  "max-file": "3"
+docker_compose_version: '1.24.1'
+package_retries: '3'
+package_delay: '1'

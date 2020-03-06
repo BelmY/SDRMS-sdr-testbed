@@ -1,0 +1,30 @@
+---
+- name: Install OpenSSH server
+  package:
+    name: 'openssh-server'
+    state: 'present'
+  register: res
+  until: res is success
+  retries: '{{ package_retries }}'
+  delay: '{{ package_delay }}'
+  become: true
+- name: Enable OpenSSH server
+  service:
+    name: 'sshd'
+    enabled: true
+  become: true
+  notify: 'Restart sshd'
+- name: Set OpenSSH server port
+  lineinfile:
+    path: '/etc/ssh/sshd_config'
+    state: 'present'
+    regexp: '^Port '
+    insertafter: '^# *Port '
+    line: 'Port {{ ssh_server.port }}'
+  when: >-
+    ssh_server is defined
+    and ssh_server is not none
+    and ssh_server.port is defined
+    and ssh_server.port is not none
+  become: true
+  notify: 'Restart sshd'

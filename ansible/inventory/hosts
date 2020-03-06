@@ -1,0 +1,19 @@
+---
+all:
+  hosts:
+    sdr_testbed:
+      ansible_host: 'sdr-testbed.hsgr.awmn'
+      ansible_port: '14897'
+      ansible_ssh_pipelining: true
+common:
+  hosts:
+    sdr_testbed:
+docker_engines:
+  hosts:
+    sdr_testbed:
+git_trackers:
+  hosts:
+    sdr_testbed:
+ssh_servers:
+  hosts:
+    sdr_testbed:

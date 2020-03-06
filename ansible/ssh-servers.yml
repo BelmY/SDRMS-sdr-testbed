@@ -1,0 +1,6 @@
+---
+- hosts: ssh_servers
+  roles:
+    - role: ssh-server
+      tags:
+        - ssh-server

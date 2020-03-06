@@ -1,0 +1,6 @@
+---
+- hosts: docker_engines
+  roles:
+    - role: docker-engine
+      tags:
+        - docker-engine

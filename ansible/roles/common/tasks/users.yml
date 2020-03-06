@@ -1,0 +1,78 @@
+---
+- name: Require no password for sudo users of wheel group
+  lineinfile:
+    dest: '/etc/sudoers'
+    state: 'present'
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+  when: ansible_distribution in ('CentOS')
+  become: true
+  tags:
+    - users
+- name: Add and remove groups
+  group:
+    name: '{{ item.groupname }}'
+    gid: '{{ item.gid | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    system: '{{ item.system | default(omit) }}'
+  become: true
+  with_items: '{{ usergroups | default([]) }}'
+  when: usergroups is not none
+  tags:
+    - users
+- name: Add and remove users
+  user:
+    append: '{{ item.append | default(omit) }}'
+    comment: '{{ item.comment | default(omit) }}'
+    create_home: '{{ item.create_home | default(omit) }}'
+    expires: '{{ item.expires | default(omit) }}'
+    force: '{{ item.force | default(omit) }}'
+    generate_ssh_key: '{{ item.generate_ssh_key | default(omit) }}'
+    group: '{{ item.group | default(omit) }}'
+    groups: '{{ item.groups | default(omit) }}'
+    home: '{{ item.home | default(omit) }}'
+    local: '{{ item.local | default(omit) }}'
+    move_home: '{{ item.move_home | default(omit) }}'
+    name: '{{ item.name }}'
+    non_unique: '{{ item.non_unique | default(omit) }}'
+    password: '{{ item.password | default(omit) }}'
+    password_lock: '{{ item.password_lock | default(omit) }}'
+    remove: '{{ item.remove | default(omit) }}'
+    seuser: '{{ item.seuser | default(omit) }}'
+    shell: '{{ item.shell | default(omit) }}'
+    skeleton: '{{ item.skeleton | default(omit) }}'
+    ssh_key_bits: '{{ item.ssh_key_bits | default(omit) }}'
+    ssh_key_comment: '{{ item.ssh_key_comment | default(omit) }}'
+    ssh_key_file: '{{ item.ssh_key_file | default(omit) }}'
+    ssh_key_passphrase: '{{ item.ssh_key_passphrase | default(omit) }}'
+    ssh_key_type: '{{ item.ssh_key_type | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    system: '{{ item.system | default(omit) }}'
+    uid: '{{ item.uid | default(omit) }}'
+    update_password: '{{ item.update_password | default(omit) }}'
+  become: true
+  with_items: '{{ users | default([]) }}'
+  when: users is not none
+  no_log: true
+  tags:
+    - users
+- name: Add authorized keys for users
+  authorized_key:
+    comment: '{{ item.1.comment | default(omit) }}'
+    exclusive: '{{ item.1.exclusive | default(omit) }}'
+    key: '{{ item.1.key }}'
+    key_options: '{{ item.1.key_options | default(omit) }}'
+    manage_dir: '{{ item.1.manage_dir | default(omit) }}'
+    path: '{{ item.1.path | default(omit) }}'
+    state: '{{ item.1.state | default(omit) }}'
+    user: '{{ item.0.name }}'
+    validate_certs: '{{ item.1.validate_certs | default(omit) }}'
+  become: true
+  with_subelements:
+    - '{{ users | default([]) }}'
+    - authorized_keys
+    - skip_missing: true
+  when: users is not none
+  no_log: true
+  tags:
+    - users

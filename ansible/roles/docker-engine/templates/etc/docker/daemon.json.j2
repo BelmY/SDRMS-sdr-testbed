@@ -1,0 +1,21 @@
+{
+{% if docker is defined %}
+  {% if docker.storage_driver is defined and docker.thinpooldev is defined %}
+    {% if docker.storage_driver == 'devicemapper' %}
+    "storage-driver": "{{ docker.storage_driver }}",
+    "storage-opts": [
+        "dm.thinpooldev={{ docker.thinpooldev }}",
+        "dm.use_deferred_removal=true",
+        "dm.use_deferred_deletion=true"
+    ],
+    {% endif %}
+  {% endif %}
+  {% if docker.userns_remap is defined %}
+    "userns-remap": "{{ docker.userns_remap }}",
+  {% endif %}
+{% endif %}
+    "log-driver": "{{ docker.log_driver | default(docker_log_driver_default) }}",
+    "log-opts": {
+{{ docker.log_opt | default(docker_log_opts_default) }}
+    }
+}

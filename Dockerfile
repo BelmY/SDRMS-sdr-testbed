@@ -25,5 +25,6 @@ RUN apt-get -q update \
 	&& apt-get -q update \
 	&& apt-get -qy install --no-install-recommends \
 		gnuradio \
+		gr-soapy \
 		python3-pip \
 	&& rm -rf /var/lib/apt/lists/*

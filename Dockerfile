@@ -1,6 +1,6 @@
 # SDR Testbed Docker image
 #
-# Copyright (C) 2019 Libre Space Foundation <https://libre.space/>
+# Copyright (C) 2019-2020 Libre Space Foundation <https://libre.space/>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -18,12 +18,12 @@
 FROM debian:buster
 MAINTAINER Vasilis Tsiligiannis <acinonyx@openwrt.gr>
 
-RUN apt-get update \
-	&& apt-get install -y curl gpg \
-	&& apt-key adv --fetch-keys "http://download.opensuse.org/repositories/home:/librespace:/satnogs/Debian_10/Release.key" \
+RUN apt-get -q update \
+	&& apt-get -qy install gnupg libcurl4 \
+	&& apt-key adv --fetch-keys "https://download.opensuse.org/repositories/home:/librespace:/satnogs/Debian_10/Release.key" \
 	&& echo "deb http://download.opensuse.org/repositories/home:/librespace:/satnogs/Debian_10 ./" > /etc/apt/sources.list.d/satnogs.list \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends \
+	&& apt-get -q update \
+	&& apt-get -qy install --no-install-recommends \
 		gnuradio \
 		python3-pip \
 	&& rm -rf /var/lib/apt/lists/*

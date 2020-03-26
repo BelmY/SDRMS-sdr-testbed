@@ -1,6 +1,1 @@
----
-- hosts: common
-  roles:
-    - role: common
-      tags:
-        - common
+lsf-ansible/common.yml

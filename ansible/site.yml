@@ -1,18 +1,1 @@
----
-- hosts: git_trackers
-  roles:
-    - role: git-tracker
-      vars:
-        git_track_message: 'Ansible: Pre-execution changes'
-      tags:
-        - git-tracker
-- import_playbook: common.yml
-- import_playbook: ssh-servers.yml
-- import_playbook: docker-engines.yml
-- hosts: git_trackers
-  roles:
-    - role: git-tracker
-      vars:
-        git_track_message: 'Ansible: Post-execution changes'
-      tags:
-        - git-tracker
+lsf-ansible/site.yml

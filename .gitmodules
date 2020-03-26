@@ -1,0 +1,3 @@
+[submodule "ansible/lsf-ansible"]
+	path = ansible/lsf-ansible
+	url = https://gitlab.com/librespacefoundation/ops/lsf-ansible.git

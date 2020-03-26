@@ -1,6 +1,1 @@
----
-- hosts: docker_engines
-  roles:
-    - role: docker-engine
-      tags:
-        - docker-engine
+lsf-ansible/docker-engines.yml

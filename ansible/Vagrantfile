@@ -6,6 +6,7 @@ def hybrid_inventory(folder)
   dynamic_inventory = File.join(File.dirname(__FILE__), ".vagrant/provisioners/ansible/inventory")
   FileUtils.mkdir_p dynamic_inventory
   Dir[File.join(static_inventory, '*')].each do |path|
+    next if File.basename(path) == "hosts"
     FileUtils.ln_sf path, dynamic_inventory
   end
   Dir[File.join(static_inventory, '../*')].each do |path|

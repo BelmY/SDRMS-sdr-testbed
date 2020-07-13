@@ -11,9 +11,12 @@ common:
 docker_engines:
   hosts:
     sdr_testbed:
-git_trackers:
+etckeepers:
   hosts:
     sdr_testbed:
 ssh_servers:
+  hosts:
+    sdr_testbed:
+gitlab_runners:
   hosts:
     sdr_testbed:

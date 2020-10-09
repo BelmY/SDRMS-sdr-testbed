@@ -1,7 +1,7 @@
 ---
 variables:
   GITLAB_CI_IMAGE_ANSIBLE: 'librespace/ansible:2.9.4'
-  GITLAB_CI_IMAGE_PYTHON: 'python:3.8'
+  GITLAB_CI_IMAGE_PYTHON: 'python:3.8.6'
   GITLAB_CI_PYPI_YAMLLINT: 'yamllint~=1.20.0'
 stages:
   - static
